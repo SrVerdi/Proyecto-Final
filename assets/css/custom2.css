@@ -1,0 +1,66 @@
+#wrapper {
+    background-color: rgba(140, 139, 139, 1);
+}
+
+.bi {
+    font-size: 7em;
+    margin: 0.5em;
+
+}
+.nav-pills{
+    background: rgba(59, 59, 66, 1);
+    color: white;
+    position: fixed;
+    width: 100%;
+}
+
+.nav-item:hover{
+    background-color: rgb(135, 180, 175);
+}
+.nav-item a{
+    color: white;
+    text-decoration: none;
+}
+
+.textfoo{
+    color: white;
+    text-align: left;
+    width: 100%;
+    text-decoration: none;
+}
+
+#nosotros{
+    background-color: rgba(196, 196, 196, 1);
+    height: 100%;
+}
+
+#nuestrosServicios {
+    background-color: rgba(196, 196, 196, 1);
+}
+
+#formulario {
+    background-color: rgba(196, 196, 196, 1);
+}
+.textInImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    justify-content: left;
+    width: 40%;
+}
+#textimg {
+    color: white;
+    text-align: right;
+    width: 49%;
+}
+
+#ourText{
+    text-align: right;
+    left: 0;
+    right: 0;
+    width: 60%;
+} 
+
