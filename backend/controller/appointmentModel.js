@@ -1,30 +1,26 @@
-const {Pool} = require('pg');
-
-const pool = new Pool({
-    user:'postgres',
-    host:'localhost',
-    database:'cerrajeria',
-    password:'mysecretpassword',
-    port:5432,
-});
+const{
+    connectionInit,
+} = require("../repository/connection.js");
+const pool = connectionInit();
 
 async function saveAppointment(appointment){
     const values = Object.values(appointment);
-    const consulta ={
-        text: 'INSERT INTO appointment(name,adress,phone,email,service,days) VALUES ($1,$2,$3,$4,$5,$6);',
+    const consulta = {
+        text:
+        `INSERT INTO appointment(name, adress, phone, email, service, day, dateNow) VALUES($1, $2, $3, $4, $5, $6, NOW());`,
         values,
     };
     try{
         const result = await pool.query(consulta);
         return result;
-    }catch(e){
-        return (e);
+    }catch (error){
+        return error;
     }
 }
 
-async function getAppointment(){
+async function getAppointments(){
     try{
-        const result = await pool.query( 'SELECT * FROM appointment;');        
+        const result = await pool.query( 'SELECT name, adress, phone , email, service, day FROM appointment;');        
         return result.rows;
     }catch(e){
         return (e);
@@ -41,10 +37,10 @@ async function deletAppointment(id){
     }
 }
 
-async function editAppointment(candidato){
-    const values = Object.values(candidato);
+async function editAppointment(appointment , id){
+    const values = Object.values(appointment);
     const consulta ={
-        text: 'UPDATE candidatos SET  name = $1, adress = $2, phone = $3, email = $4, service = $5, days = $6 WHERE id = $3 RETURNING *;',
+        text: `UPDATE appointmnet SET name = $1, adress = $2, phone = $3, email = $4, service = $5, days = $6 WHERE id = ${id};`,
         values,
     };
     try{
@@ -56,9 +52,9 @@ async function editAppointment(candidato){
 }
 
 module.exports = {
-    getAppointment,
+    getAppointments,
     deletAppointment,
     editAppointment,
-    saveAppointment,
+    saveAppointment
 };
 
