@@ -1,36 +1,35 @@
 const http = require("http");
 const url = require("url");
 const fs = require("fs");
-/*const {
+const {
     saveAppointment,
-} = require("./query");
+    getDays,
+} = require("../modelo/query.js");
 
-*/
-http.createServer((req, res) =>{
-    /*if(req.url == "/setAppointment" && req.method == "POST"){
+http.createServer((req, res) => {
+    if (req.url == "/setAppointment" && req.method == "POST") {
         let body = "";
-        req.on("data", (chunk) =>{
-            console.log(chunk.toString());
+        req.on("data", (chunk) => {
             body += chunk.toString();
         });
         req.on("end", async () => {
-            console.log('body: ' + body);
             const appointment = JSON.parse(body);
             const result = await saveAppointment(appointment);
-            console.log('body: ' + body);
-            console.log('Insert: ' + JSON.stringify(result));
             res.end(JSON.stringify(result));
         });
-    }*/
-    if (req.url == "/" && req.method == "GET"){
-        console.log("Fuera del if");
-        fs.readFile("../../frontend/login.html", (err, data) => {
-            res.setHeader("Content-Type","text/html");
-            console.log("Dentro del if");
+    }
+    if (req.url == "/" && req.method == "GET") {
+        fs.readFile("../../frontend/index.html", (err, data) => {
+            res.setHeader("Content-Type", "text/html");
             res.end(data);
-            console.log("Sigue dentro");
         });
-        
+
+    }
+    if (req.url == "/getDays" && req.method == "GET") {
+        (async () => {
+            const days = await getDays();d
+            res.end(JSON.stringify(days))
+        })();
     }
 })
-.listen(8080)
+    .listen(8080)

@@ -1,15 +1,3 @@
-CREATE TABLE appointment(
-id SERIAL,
-names VARCHAR(45) NOT NULL, 
-adress VARCHAR(45) NOT NULL,  --
-phone INT NOT NULL,  -- necesitamos 
-email VARCHAR(100) NOT NULL,  -- email mas largo 76 caracteres
-service VARCHAR(50) NOT NULL, 
-days VARCHAR(12) NOT NULL,  -- dia mas largo 9 caracteres
-PRIMARY KEY (id));
-
-
-CREATE TABLE (days VARCHAR(45), state boolean);
 
 
 DBB: Repositorio
@@ -19,4 +7,35 @@ Escructura correcta-> controlador a servicio, servicio a bs.
 
 
 
-------> 
+//creamos citas
+
+CREATE TABLE appointment(
+id SERIAL,
+names VARCHAR(45) NOT NULL, 
+adress VARCHAR(45) NOT NULL,  --
+phone VARCHAR(12) NOT NULL, 
+email VARCHAR(200) NOT NULL,  
+service VARCHAR(200) NOT NULL,
+day VARCHAR(45) NOT NULL,
+dateNow date,
+PRIMARY KEY (id) ) 
+
+
+//creamos tabla dias
+
+CREATE TABLE days (id SERIAL, 
+day VARCHAR(45), 
+state boolean , 
+PRIMARY KEY (id));
+
+
+//Insertamos dias
+insert into days (day,state) values('Lunes',true),('Martes',true),('Miércoles',true), ('Jueves',true),('Viernes',true),('Sábado',true),('Domingo',true);
+
+//Para mostrar los dias disponibles
+SELECT day FROM days WHERE state = true;
+
+
+SELECT NOW();
+
+SET TIME ZONE DEFAULT;

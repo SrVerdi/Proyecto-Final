@@ -7,10 +7,9 @@ const pool = new Pool({
     database: 'cerrajeria',
     port: 5432,
 })
-
 async function getDays(){
     try{
-        const result = await pool.query(`SELECT days FROM days WHERE state = true;`);
+        const result = await pool.query(`SELECT day FROM days WHERE state = true;`);
         return result.rows;
     }catch(e){
         return e;
@@ -20,7 +19,7 @@ async function saveAppointment(appointment){
     const values = Object.values(appointment);
     const consulta = {
         text:
-        "INSERT INTO appointment (names, adress, phone, email, service, days) VALUES ($1, $2, $3, $4, $5. $6)",
+        `INSERT INTO appointment(names, adress, phone, email, service, day, dateNow) VALUES($1, $2, $3, $4, $5, $6, NOW());`,
         values,
     };
     try{
@@ -30,7 +29,6 @@ async function saveAppointment(appointment){
         return e;
     }
 }
-
 module.exports = {
     getDays,
     saveAppointment,
