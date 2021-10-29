@@ -17,7 +17,7 @@ body {
 .imagenfondo {
     color: white;
     text-shadow: 0.03em 0.05em 0.05em #333;
-    background-image: url('../img/keys2.jpg');
+    background-image: url('https://cdn.pling.com/img/b/0/f/9/cc58d7ecdbaf49ccbab881d7d06be78c58935042769524d558bad8841a3a02c0788a.png');
     background-position: center center;
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
