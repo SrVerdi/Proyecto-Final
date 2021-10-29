@@ -3,10 +3,10 @@ const url = require("url");
 const fs = require("fs");
 const {
     saveAppointment,
-} = require("../controller/appointmentModel.js");
+} = require("../controller/appointmentController.js");
 const {
     getDays,
-} = require("../controller/daysModel.js");
+} = require("../controller/daysController.js");
 
 http.createServer((req, res) => {
     //IF RECIVE THIS REQUEST,CALL THE METHOD "saveAppointment"
@@ -28,12 +28,11 @@ http.createServer((req, res) => {
             res.end(data);
         });
     }
-    //IF RECIVE THIS REQUEST,     //IF RECIVE THIS REQUEST,CALL THE METHOD "getDays"
+    //IF RECIVE THIS REQUEST,CALL THE METHOD "getDays"
     if (req.url == "/getDays" && req.method == "GET") {
         (async () => {
             const days = await getDays();
             res.end(JSON.stringify(days))
         })();
     }
-})
-    .listen(8080)
+}).listen(8080)

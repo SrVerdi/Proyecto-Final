@@ -1,6 +1,6 @@
 const{
     connectionInit,
-} = require("../repository/connection.js");
+} = require("../repository/conenection.js");
 const pool = connectionInit();
 
 async function saveAppointment(appointment){

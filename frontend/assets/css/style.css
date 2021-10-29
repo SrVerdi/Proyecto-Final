@@ -17,7 +17,7 @@ body {
 .imagenfondo {
     color: white;
     text-shadow: 0.03em 0.05em 0.05em #333;
-    background-image: url('img/llave.jpg');
+    background-image: url('../img/keys2.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
@@ -33,7 +33,7 @@ body {
     margin: 0px;
     padding: 0px;
     width: 65%;
-    /* define el tamaño del texto de acuerdo al ancho de la ventana */
+    /* define el tamaÃ±o del texto de acuerdo al ancho de la ventana */
     font-size: 6.5vw;
     text-align: center;
     /* desplaza el texto en el eje x */
